@@ -1,124 +1,68 @@
-# 🌐 Webアプリケーション開発ポートフォリオ（Java / JSP / Servlet）
+# 🌐 Webアプリケーション開発ポートフォリオ
 
 ## 📘 概要
-Java / JSP / Servlet / SQL を用いて開発した Web アプリケーションです。  
-ユーザー管理・データ登録・検索などの CRUD 処理を実装し、MVC 設計と DB 連携を学習目的で作成しました。
+- 利用者が職種を選び、接客シナリオに対して選択肢を選ぶ形式のトレーニングアプリです。
+- 選択肢ごとにフィードバックが表示され、適切な対応を学ぶことができます。
+- 支援施設や職業訓練の現場での活用を想定し、シンプルでカスタマイズしやすい構成になっています。
+
+
 
 ---
 
 ## 🛠 開発環境
-| 項目 | 内容 |
-|------|------|
-| 言語 | Java（JDK 17 など） |
-| フレームワーク | Servlet / JSP（Jakarta EE） |
-| データベース | MySQL 8.0 |
-| ビルドツール | Apache Maven または Eclipse Dynamic Web Project |
-| アプリケーションサーバー | Apache Tomcat 10.x |
-| IDE | Eclipse / IntelliJ IDEA / VS Code |
-| バージョン管理 | Git / GitHub |
-| OS | macOS / Windows |
+- HTML / CSS / JavaScript（バニラJS）
+- JSON（シナリオ管理用）
+- 推奨ブラウザ：Google Chrome / Microsoft Edge
+- 開発・動作確認：Visual Studio Code + Live Server
+
+
 
 ---
 
 ## 🧩 機能一覧
-| カテゴリ | 内容 |
-|------------|------|
-| ユーザー管理 | 新規登録・ログイン・ログアウト・パスワード変更 |
-| データ登録 | フォーム入力によるデータ追加・バリデーション処理 |
-| データ検索 | キーワード検索・絞り込み検索・一覧表示 |
-| 更新／削除 | 登録データの編集・削除機能 |
-| セッション管理 | ログインユーザー情報の保持とアクセス制御 |
-| エラーハンドリング | 例外処理／404ページ／入力エラーメッセージ表示 |
+- 職種選択（飲食店、スーパー、洋服屋、コンビニ、書店、クリーニング店、清掃業、軽作業など）
+- シナリオ表示と選択肢による回答
+- 選択肢に応じたフィードバック表示
+- 「次のシナリオへ」ボタンで複数の場面を連続練習
+- シナリオデータは `scenarios.json` で管理し、自由に追加・編集可能
+
 
 ---
 
 ## 📂 ディレクトリ構成（例）
 ```
-project/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── servlet/
-│   │   │   │   ├── LoginServlet.java
-│   │   │   │   ├── RegisterServlet.java
-│   │   │   │   └── ListServlet.java
-│   │   │   └── dao/
-│   │   │       └── UserDAO.java
-│   │   ├── webapp/
-│   │   │   ├── WEB-INF/web.xml
-│   │   │   ├── jsp/login.jsp
-│   │   │   ├── jsp/register.jsp
-│   │   │   └── css/style.css
-│   └── test/
+customer-sim
+├── index.html
+├── style.css
+├── script.js
+├── scenarios.jason
 └── README.md
-```
+
 
 ---
 
-## 🗄 データベース構成
-### 📘 ER図
-> 画像を `docs/er_diagram.png` に差し替えてください。  
-> 例：  
-> ![ER図](./docs/er_diagram.png)
-
-### テーブル定義例：users
-| カラム名 | 型 | 説明 |
-|-----------|----|------|
-| id | INT | 主キー（AUTO_INCREMENT） |
-| name | VARCHAR(50) | ユーザー名 |
-| email | VARCHAR(100) | メールアドレス |
-| password | VARCHAR(255) | ハッシュ化されたパスワード |
-| created_at | DATETIME | 登録日時 |
-
----
 
 ## 🧠 設計方針・工夫点
-- MVC設計：Servlet（Controller）、DAO（Model）、JSP（View）を分離
-- SQLインジェクション対策として **PreparedStatement** を使用
-- パスワードは **ハッシュ化（SHA-256 / bcrypt）** して保存
-- JSP include によるヘッダー・フッターの共通化
-- ER図・シーケンス図を用いて処理を明確化
+- **職種ごとの柔軟な拡張性**：JSONファイルに新しい職種やシナリオを追加するだけで対応可能
+- **視覚的にわかりやすいUI**：利用者が迷わず操作できるよう、画面遷移を最小限に
+- **フィードバックの質にこだわり**：◎○×などの記号で直感的に理解できるよう工夫
+- **職員による編集も想定**：非エンジニアでも `scenarios.json` を編集しやすい構造に
+
 
 ---
 
-## 📊 UML / 設計資料
-> 以下のファイルを差し替えてください（今はプレースホルダー画像です）：
->
-> - `docs/usecase.png`：ユースケース図  
-> - `docs/uml_sequence.png`：シーケンス図  
-> - `docs/class_diagram.png`：クラス図  
->
-> 例：  
-> ![シーケンス図](./docs/uml_sequence.png)
-
----
-
-## 💬 使用技術のポイント
-- **Servlet & JSP**：HTTPリクエスト処理・セッション管理・リダイレクト制御  
-- **DAOパターン**：DB操作の共通化・保守性向上  
-- **SQL**：CRUD・JOIN・トランザクション  
-- **HTML/CSS**：UI / フォーム入力補助  
-- **Tomcat**：WARデプロイ・ローカルテスト環境構築  
-
----
 
 ## 🧭 今後の拡張予定
-- Bootstrap / Vue.js の導入でUI改善  
-- REST API 化（JSON対応）  
-- Docker による環境構築自動化  
-- ログイン履歴・アクセスログの分析機能追加  
-- JUnit / Mockito による単体テストの充実  
+- 難易度やタグによるシナリオ分類（例：level: easy / tag: マナー）
+- 音声読み上げ機能（Web Speech API）
+- スコア表示や履歴記録機能
+- スマートフォン対応のUI最適化
+- GitHub Pagesなどでのオンライン公開
+- CSVやスプレッドシートからのシナリオ一括読み込み
+
 
 ---
 
-## 📸 画面キャプチャ（例）
-> - `docs/login_screen.png`  
-> - `docs/list_screen.png`  
->
-> 例：  
-> ![ログイン画面](./docs/login_screen.png)
-
----
 
 ## 🧾 ライセンス・著作権
 このプロジェクトは学習目的で作成したものであり、商用利用は想定していません。  
@@ -135,8 +79,4 @@ project/
 ---
 
 ## ✅ 最終更新日
-2025-11-11
-
----
-
-> ✏️ **編集方法**：VS Code / Typora などの Markdown 対応エディタで開くと、見出しや画像をプレビューできます。
+2025-11-12
