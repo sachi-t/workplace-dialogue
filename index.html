@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>接客シミュレーション</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>接客シミュレーション</h1>
+
+    <!-- 業種選択画面 -->
+    <div id="scene-select">
+      <h2>業種を選んでください</h2>
+      <button onclick="startScene('restaurant')">🍽️ 飲食店</button>
+      <button onclick="startScene('supermarket')">🛒 スーパー</button>
+      <button onclick="startScene('fashion')">👕 洋服屋</button>
+      <button onclick="startScene('convenience')">🏪 コンビニ</button>
+      <button onclick="startScene('bookstore')">📚 書店</button>
+      <button onclick="startScene('cleaning')">🧼 クリーニング店</button>
+      <button onclick="startScene('cleaningWork')">🧺 清掃業</button>
+      <button onclick="startScene('lightWork')">📦 軽作業</button>
+    </div>
+
+    <!-- シナリオ画面 -->
+    <div id="scenario" style="display:none;">
+      <p id="question"></p>
+      <div id="choices"></div>
+    </div>
+
+    <!-- 結果画面 -->
+    <div id="result" style="display:none;">
+      <p id="feedback"></p>
+      <button onclick="restart()">次のシナリオへ</button>
+      <button onclick="goBack()">職種選択に戻る</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
