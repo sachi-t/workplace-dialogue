@@ -10,7 +10,7 @@
 ---
 
 ## 🛠 開発環境
-- HTML / CSS / JavaScript（バニラJS）
+- HTML / CSS / JavaScript
 - JSON（シナリオ管理用）
 - 推奨ブラウザ：Google Chrome / Microsoft Edge
 - 開発・動作確認：Visual Studio Code + Live Server
