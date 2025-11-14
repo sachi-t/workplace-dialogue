@@ -13,14 +13,17 @@
     <!-- 業種選択画面 -->
     <div id="scene-select">
       <h2>業種を選んでください</h2>
-      <button onclick="startScene('restaurant')">🍽️ 飲食店</button>
-      <button onclick="startScene('supermarket')">🛒 スーパー</button>
-      <button onclick="startScene('fashion')">👕 洋服屋</button>
-      <button onclick="startScene('convenience')">🏪 コンビニ</button>
-      <button onclick="startScene('bookstore')">📚 書店</button>
-      <button onclick="startScene('cleaning')">🧼 クリーニング店</button>
-      <button onclick="startScene('cleaningWork')">🧺 清掃業</button>
-      <button onclick="startScene('lightWork')">📦 軽作業</button>
+      <div class="button-grid">
+        <button onclick="startScene('restaurant')">🍽️ 飲食店</button>
+        <button onclick="startScene('supermarket')">🛒 スーパー</button>
+        <button onclick="startScene('fashion')">👕 洋服屋</button>
+        <button onclick="startScene('convenience')">🏪 コンビニ</button>
+        <button onclick="startScene('bakery')">🍞 パン屋</button>
+        <button onclick="startScene('bookstore')">📚 書店</button>
+        <button onclick="startScene('cleaning')">🧼 クリーニング店</button>
+        <button onclick="startScene('cleaningWork')">🧺 清掃業</button>
+        <button onclick="startScene('lightWork')">📦 軽作業</button>
+      </div>
     </div>
 
     <!-- シナリオ画面 -->
@@ -32,8 +35,8 @@
     <!-- 結果画面 -->
     <div id="result" style="display:none;">
       <p id="feedback"></p>
-      <button onclick="restart()">次のシナリオへ</button>
-      <button onclick="goBack()">職種選択に戻る</button>
+      <button onclick="restart()">▶️ 次のシナリオへ</button>
+      <button onclick="goBack()">🔙 職種選択に戻る</button>
     </div>
   </div>
 

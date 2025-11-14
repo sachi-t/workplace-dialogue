@@ -9,9 +9,17 @@ body {
   background: white;
   padding: 2em;
   border-radius: 10px;
-  max-width: 600px;
+  max-width: 850px;
   margin: auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1em;
+  justify-items: center;
+  margin-top: 1em;
 }
 
 button {
@@ -20,11 +28,40 @@ button {
   font-size: 1em;
   border: none;
   border-radius: 5px;
-  background-color: #4CAF50;
-  color: white;
   cursor: pointer;
+  min-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #e0e0e0; 
+  color: #333;               
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #bdbdbd;
+  opacity: 0.9;
+}
+
+/* .next-button {
+  background-color: #2196F3;
+  color: white;
+} */
+
+.next-button:hover {
+  background-color: #1976D2;
+}
+
+/* .back-button {
+  background-color: #FF9800;
+  color: white;
+} */
+
+.back-button:hover {
+  background-color: #F57C00;
+}
+
+@media (max-width: 600px) {
+  .button-grid {
+    grid-template-columns: repeat(2, 1fr); /* 小さい画面では2列に */
+  }
 }
