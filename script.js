@@ -18,6 +18,10 @@ function startScene(sceneName) {
 
 function loadScenario(index) {
   const s = scenarioData[currentScene][index];
+  const total = scenarioData[currentScene].length;
+
+  // 進行状況を表示（例：1 / 3）
+  document.getElementById("progress").textContent = `${index + 1} / ${total}`;
   document.getElementById("question").textContent = s.question;
 
   const choicesDiv = document.getElementById("choices");
@@ -33,16 +37,35 @@ function loadScenario(index) {
 
 function selectChoice(index) {
   const feedback = scenarioData[currentScene][currentScenario].feedbacks[index];
+  const total = scenarioData[currentScene].length;
+
   document.getElementById("scenario").style.display = "none";
   document.getElementById("result").style.display = "block";
+
+  // 結果画面に進行状況を表示
+  document.getElementById("progress-result").textContent = `${currentScenario + 1} / ${total}`;
   document.getElementById("feedback").textContent = feedback;
+
+  // 最後の問題かどうかでボタン表示を切り替え
+  const nextBtn = document.getElementById("next-button");
+  if (currentScenario + 1 >= total) {
+    nextBtn.style.display = "none";
+  } else {
+    nextBtn.style.display = "inline-block";
+  }
 }
 
 function restart() {
-  currentScenario = (currentScenario + 1) % scenarioData[currentScene].length;
-  document.getElementById("result").style.display = "none";
-  document.getElementById("scenario").style.display = "block";
-  loadScenario(currentScenario);
+  currentScenario++;
+  const total = scenarioData[currentScene].length;
+
+  if (currentScenario < total) {
+    document.getElementById("result").style.display = "none";
+    document.getElementById("scenario").style.display = "block";
+    loadScenario(currentScenario);
+  } else {
+    goBack(); // 最後の問題が終わったら職種選択に戻る
+  }
 }
 
 function goBack() {

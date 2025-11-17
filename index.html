@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>接客シミュレーション</title>
+  <title>職業別会話トレーニング</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>接客シミュレーション</h1>
 
     <!-- 業種選択画面 -->
     <div id="scene-select">
+      <!-- タイトルはこの画面だけに表示 -->
+      <div class="title-block">
+        <div class="title-sub">職業別</div>
+        <div class="title-main">会話トレーニング</div>
+      </div>
+
       <h2>業種を選んでください</h2>
       <div class="button-grid">
         <button onclick="startScene('restaurant')">🍽️ 飲食店</button>
@@ -27,17 +32,22 @@
     </div>
 
     <!-- シナリオ画面 -->
-    <div id="scenario" style="display:none;">
-      <p id="question"></p>
-      <div id="choices"></div>
-    </div>
+<div id="scenario" style="display:none;">
+  <p id="progress"></p> <!-- ← ここに 1 / 3 を表示 -->
+  <p id="question"></p>
+  <div id="choices"></div>
+</div>
 
-    <!-- 結果画面 -->
-    <div id="result" style="display:none;">
-      <p id="feedback"></p>
-      <button onclick="restart()">▶️ 次のシナリオへ</button>
-      <button onclick="goBack()">🔙 職種選択に戻る</button>
-    </div>
+<!-- 結果画面 -->
+<div id="result" style="display:none;">
+  <p id="progress-result"></p>
+  <p id="feedback"></p>
+  <button id="next-button" onclick="restart()">▶️ 次のシナリオへ</button>
+  <button id="back-button" onclick="goBack()">🔙 職種選択に戻る</button>
+</div>
+
+
+
   </div>
 
   <script src="script.js"></script>
