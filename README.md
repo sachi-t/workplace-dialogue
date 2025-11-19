@@ -71,12 +71,11 @@ customer-sim
 ---
 
 ## 👤 作成者
-- **氏名（またはGitHubアカウント）**：Your Name  
-- **開発期間**：2025年○月〜○月  
-- **連絡先**：your-email@example.com  
-- **GitHub**：https://github.com/yourname/java-webapp-portfolio
+- **氏名（またはGitHubアカウント）**：Sachi T
+- **開発期間**：2025年10月〜11月   
+- **GitHub**：https://github.com/sachi-t
 
 ---
 
 ## ✅ 最終更新日
-2025-11-12
+2025-11-19
