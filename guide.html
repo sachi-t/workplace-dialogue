@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>職員向け設定ガイド</title>
+  <style>
+    body { font-family: sans-serif; line-height: 1.6; padding: 2em; background: #f9f9f9; }
+    h1, h2 { color: #333; }
+    code, pre { background: #eee; padding: 4px 6px; border-radius: 4px; }
+    .example { background: #fff; border: 1px solid #ccc; padding: 1em; margin: 1em 0; max-width: 600px; border-radius: 6px;
+ }
+    ul { margin-left: 1em; }
+  </style>
+</head>
+<body>
+  <h1>🔧 職員向け設定ガイド</h1>
+  <p>このページでは、職業別会話トレーニングアプリに新しい業種やシナリオを追加する方法をご案内します。</p>
+
+  <h2>① 業種を追加する</h2>
+  <p>業種は <code>index.html</code> に直接記述されています。以下の手順でボタンを追加してください。</p>
+
+  <h3>📍 手順</h3>
+<ul>
+  <li><code>index.html</code> を VS Code などで開く</li>
+  <li><code>&lt;div class="button-grid"&gt;</code> の中に以下のようなボタンを追加</li>
+</ul>
+
+<div class="example">
+  <pre>&lt;button onclick="startScene('newJobId')"&gt;🧪 新しい業種名&lt;/button&gt;</pre>
+</div>
+
+<img src="images/guide1.png" alt="VS Codeでindex.htmlを編集する様子">
+<p style="font-size:0.9em; color:#555;">▲ VS Codeで業種ボタンを追加する位置</p>
+
+  <h2>② シナリオを追加する</h2>
+<p>シナリオは <code>scenarios.json</code> に業種ごとにまとめて記述されています。以下の手順で追加してください。</p>
+
+<h3>📍 手順</h3>
+<ul>
+  <li><code>scenarios.json</code> を VS Code などで開く</li>
+  <li>該当する業種（例：<code>"lightWork"</code>）の配列の末尾に、以下の形式で新しいシナリオを追加</li>
+</ul>
+
+<div class="example">
+  <pre>{
+  "question": "スタッフ：「〇〇はどこに置きましたか」",
+  "choices": [
+    "「〇〇は△△に置きました」",
+    "「思い出すので少し待ってください」",
+    "自分で探してください"
+  ],
+  "feedbacks": [
+    "◎ 丁寧な対応で安心感があります！",
+    "〇 すぐに答えられない場合に思い出そうとする姿勢は良いです。",
+    "× 不親切な対応です。"
+  ]
+}</pre>
+</div>
+
+<img src="images/guide2.png" alt="VS Codeでscenarios.jsonを編集する様子">
+<p style="font-size:0.9em; color:#555;">▲ VS Codeで業種ごとの配列にシナリオを追加する位置</p>
+
+<h2>③ 新しい業種に対応するシナリオを追加する</h2>
+<p>新しい業種を <code>index.html</code> に追加した場合は、対応するシナリオも <code>scenarios.json</code> に記述する必要があります。</p>
+
+<h3>📍 手順</h3>
+<ul>
+  <li><code>scenarios.json</code> を VS Code などで開く</li>
+  <li>ファイルの最下部に、新しい業種名（例：<code>"flowerShop"</code>）をキーとして追加</li>
+  <li>その業種に対応するシナリオを配列で記述</li>
+</ul>
+
+<div class="example">
+  <pre>"flowerShop": [
+  {
+    "question": "お客様：「この花、長持ちしますか？」",
+    "choices": [
+      "「はい、水替えをすれば1週間ほど持ちます」",
+      "「わかりません」",
+      "無視する"
+    ],
+    "feedbacks": [
+      "◎ 丁寧な説明で安心感があります！",
+      "△ 他のスタッフに確認する姿勢があるとより良いです。",
+      "× 無視は不親切です。"
+    ]
+  }
+]</pre>
+</div>
+
+<h3>📌 注意点</h3>
+<ul>
+  <li><strong>業種名（キー）</strong>は <code>index.html</code> の <code>startScene('〇〇')</code> のIDと一致させてください</li>
+  <li><strong>JSON形式</strong>に注意（カンマの付け忘れ、全角記号など）</li>
+</ul>
+
+<p>保存後、アプリを再起動すると新しい業種とシナリオが反映されます。</p>

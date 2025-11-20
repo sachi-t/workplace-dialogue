@@ -10,9 +10,17 @@ async function loadJSON() {
 function startScene(sceneName) {
   currentScene = sceneName;
   currentScenario = 0;
+
   document.getElementById("scene-select").style.display = "none";
   document.getElementById("scenario").style.display = "block";
   document.getElementById("result").style.display = "none";
+
+  // 職員向け設定ガイドボタンを非表示にする
+  const guideButton = document.getElementById("guide-button");
+  if (guideButton) {
+    guideButton.style.display = "none";
+  }
+
   loadScenario(currentScenario);
 }
 
@@ -20,7 +28,6 @@ function loadScenario(index) {
   const s = scenarioData[currentScene][index];
   const total = scenarioData[currentScene].length;
 
-  // 進行状況を表示（例：1 / 3）
   document.getElementById("progress").textContent = `${index + 1} / ${total}`;
   document.getElementById("question").textContent = s.question;
 
@@ -42,11 +49,9 @@ function selectChoice(index) {
   document.getElementById("scenario").style.display = "none";
   document.getElementById("result").style.display = "block";
 
-  // 結果画面に進行状況を表示
   document.getElementById("progress-result").textContent = `${currentScenario + 1} / ${total}`;
   document.getElementById("feedback").textContent = feedback;
 
-  // 最後の問題かどうかでボタン表示を切り替え
   const nextBtn = document.getElementById("next-button");
   if (currentScenario + 1 >= total) {
     nextBtn.style.display = "none";
@@ -72,9 +77,21 @@ function goBack() {
   document.getElementById("result").style.display = "none";
   document.getElementById("scenario").style.display = "none";
   document.getElementById("scene-select").style.display = "block";
+
+  // 職員向け設定ガイドボタンを再表示する
+  const guideButton = document.getElementById("guide-button");
+  if (guideButton) {
+    guideButton.style.display = "block";
+  }
 }
 
 window.onload = async () => {
   await loadJSON();
   document.getElementById("scene-select").style.display = "block";
+
+  // 初期表示時に職員向け設定ガイドボタンを表示
+  const guideButton = document.getElementById("guide-button");
+  if (guideButton) {
+    guideButton.style.display = "block";
+  }
 };

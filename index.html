@@ -13,11 +13,13 @@
     <div id="scene-select">
       <!-- タイトルはこの画面だけに表示 -->
       <div class="title-block">
-        <div class="title-sub">職業別</div>
-        <div class="title-main">会話トレーニング</div>
-      </div>
+      <div class="title-sub">職業別</div>
+      <div class="title-main">会話トレーニング</div>
+      <div class="title-brand">はたらくん</div>
+    </div>
 
-      <h2>業種を選んでください</h2>
+
+      <h2>👇業種を選んでください👇</h2>
       <div class="button-grid">
         <button onclick="startScene('restaurant')">🍽️ 飲食店</button>
         <button onclick="startScene('supermarket')">🛒 スーパー</button>
@@ -31,7 +33,7 @@
       </div>
     </div>
 
-    <!-- シナリオ画面 -->
+<!-- シナリオ画面 -->
 <div id="scenario" style="display:none;">
   <p id="progress"></p> <!-- ← ここに 1 / 3 を表示 -->
   <p id="question"></p>
@@ -45,11 +47,14 @@
   <button id="next-button" onclick="restart()">▶️ 次のシナリオへ</button>
   <button id="back-button" onclick="goBack()">🔙 職種選択に戻る</button>
 </div>
+</div>
+
+<!-- 職員向け設定ガイドボタン -->
+<div class="guide-button-area" id="guide-button">
+  <a href="guide.html" class="guide-button" target="_blank">⚙職員向け設定ガイド</a>
+</div>
 
 
-
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
